@@ -11,6 +11,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -30,7 +31,8 @@ public class BaseTest {
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equalsIgnoreCase("chrome")) {
-			WebDriverManager.chromedriver().setup();
+			//WebDriverManager.chromedriver().setup();
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//src//main//java//drivers//chromedriver.exe");
 			driver = new ChromeDriver();
 			
 		}else if(browserName.equalsIgnoreCase("firefox")){
@@ -45,7 +47,9 @@ public class BaseTest {
 		return driver;
 	}
 	
-	@BeforeTest
+	
+	//akwaysRun=true allows our groups to successfuly work 
+	@BeforeMethod(alwaysRun = true)
 	public LandingPage launchApplication() throws IOException {
 		driver = initializeDriver();
 		lp = new LandingPage(driver);
@@ -54,8 +58,8 @@ public class BaseTest {
 	}
 
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		driver.close();
+		driver.quit();
 	}
 }

@@ -40,7 +40,6 @@ public class StandAloneTest extends BaseTest{
 		ProductCatalogue productCatalogue = lp.fillLoginForm("mariana@email.com", "A01220787m");
 		OrderPage ordersPage = productCatalogue.goToOrdersPage();
 		Assert.assertTrue(ordersPage.verifyProductDisplay(productName));
-
 	}
 	
 }
