@@ -22,7 +22,7 @@ public class ErrorValidationsTest extends BaseTest{
 	@Test
 	public void ProductErrorValidation() throws IOException, InterruptedException {
 		String productName = "ZARA COAT 3";
-		ProductCatalogue productCatalogue = lp.fillLoginForm("anishka@gmail.com", "Iamking@000");
+		ProductCatalogue productCatalogue = lp.fillLoginForm("mariana@email.com", "A01220787m");
 		//Add To cart
 		productCatalogue.addProductToCart(productName);
 		CartPage cartPage= productCatalogue.goToCartPage();
