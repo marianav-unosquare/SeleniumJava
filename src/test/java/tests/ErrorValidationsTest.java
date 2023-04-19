@@ -3,16 +3,14 @@ package tests;
 import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+import testComponents.Retry;
 import pageObjects.CartPage;
-import pageObjects.CheckoutPage;
-import pageObjects.ConfirmationPage;
 import pageObjects.ProductCatalogue;
 import testComponents.BaseTest;
 
 public class ErrorValidationsTest extends BaseTest{
 	
-	@Test(groups= {"ErrorHandling"})
+	@Test(groups= {"ErrorHandling"}, retryAnalyzer=Retry.class)
 	public void LoginErrorValidation() throws IOException, InterruptedException {
 	
 		lp.fillLoginForm("maana@email.com", "A0122078");

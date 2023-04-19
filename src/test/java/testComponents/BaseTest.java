@@ -10,15 +10,14 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -67,6 +66,14 @@ public class BaseTest {
 		//List of {map}, {map}
 	}
 
+	//Take screenshot
+	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+		TakesScreenshot ts= (TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir") +"//reports"+ testCaseName + ".png");
+		FileUtils.copyFile(source, file);
+		return System.getProperty("user.dir") +"//reports"+ testCaseName + ".png";
+	}
 	
 	//akwaysRun=true allows our groups to successfuly work 
 	@BeforeMethod(alwaysRun = true)

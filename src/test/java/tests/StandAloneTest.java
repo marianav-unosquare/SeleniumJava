@@ -3,7 +3,7 @@ package tests;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import org.openqa.selenium.WebElement;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -44,10 +44,11 @@ public class StandAloneTest extends BaseTest{
 		Assert.assertTrue(ordersPage.verifyProductDisplay(productName));
 	}
 	
+	//Extent Reports --
+	
 	@DataProvider
 	public Object[][] getData() throws IOException {
 		List<HashMap<String,String>> data = getJsonDataToMap(System.getProperty("user.dir") +"//src//test//java//data//purchaseOrder.json");
-		
 //		HashMap<String,String> map = new HashMap<String, String>();
 //		map.put("email", "mariana@email.com");
 //		map.put("password", "A01220787m");
@@ -57,8 +58,6 @@ public class StandAloneTest extends BaseTest{
 //		map2.put("email", "mariana@gmail.com");
 //		map2.put("password", "Mariana123.");
 //		map2.put("product", "ADIDAS ORIGINAL");
-		
-		
 		return new Object[][] {{data.get(0)}, {data.get(1)}};
 	}
 	
